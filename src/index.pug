@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		meta(name="description", content="RPG app")
+		meta(name="keywords", content="RPG, app, role-playing-game, roleplay, fantasy, rpg-app")
+		meta(name="author", content="HenriqueHBR")
+		// Prevent FOUC (flash of unstyled content)
+		style.
+			.fouc-hidden {
+				display: none
+			}
+		script.
+			var html = document.querySelector("html");
+			html.classList.add("fouc-hidden");
+			window.onload = function () {
+				html.classList.remove("fouc-hidden");
+			}
+		title RPG App
+		link(rel="stylesheet", href="css/index.css")
+	body
+		img.background-color(src="img/pixel-wallpaper1.png")
+		#app
+			.app-header
+				h1.app-title RPG app
+			.app-menu
+				menu-btn Iniciar
+				menu-btn Carregar RPG
+				menu-btn Editar
+		script(src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js")
+		script(src="js/index.js")
