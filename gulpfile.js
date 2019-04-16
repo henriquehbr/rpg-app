@@ -4,9 +4,16 @@ var stylus = require("gulp-stylus");
 var coffee = require("gulp-coffee");
 var terser = require("gulp-terser");
 
+// Compile the index .pug file from "src" to "/" 
+gulp.task("pug-index", function () {
+	return gulp.src("src/index.pug")
+		.pipe(pug())
+		.pipe(gulp.dest("."))
+});
+
 // Compile .pug files (Pug templates) from "src" to "dist"
-gulp.task("pug", function buildHTML() {
-	return gulp.src("src/*.pug")
+gulp.task("pug", function () {
+	return gulp.src(["src/*.pug", "!src/index.pug"])
 		.pipe(pug())
 		.pipe(gulp.dest("dist"))
 });
@@ -29,11 +36,12 @@ gulp.task("coffee", function () {
 });
 
 // Compile Pug templates, stylus stylesheets and Coffeescript scripts at once
-gulp.task("build", gulp.parallel("pug", "stylus", "coffee"));
+gulp.task("build", gulp.parallel("pug-index", "pug", "stylus", "coffee"));
 
 // Watch for any file change on the "src" directory
 gulp.task("watch", function () {
-	gulp.watch("src/*.pug", gulp.parallel("pug"));
+	gulp.watch("src/index.pug", gulp.parallel("pug-index"));
+	gulp.watch(["src/*.pug", "!src/index.pug"], gulp.parallel("pug"));
 	gulp.watch("src/css/*.styl", gulp.parallel("stylus"));
 	gulp.watch("src/js/*.coffee", gulp.parallel("coffee"));
 });
