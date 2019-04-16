@@ -2,7 +2,7 @@ var gulp = require("gulp");
 var pug = require("gulp-pug");
 var stylus = require("gulp-stylus");
 var coffee = require("gulp-coffee");
-var uglifyjs = require("gulp-uglify");
+var terser = require("gulp-terser");
 
 // Compile .pug files (Pug templates) from "src" to "dist"
 gulp.task("pug", function buildHTML() {
@@ -13,18 +13,18 @@ gulp.task("pug", function buildHTML() {
 
 // Compile .styl files (Stylus stylesheets) from "src" to "dist"
 gulp.task("stylus", function () {
-	return gulp.src("src/css/*.styl")
+	return gulp.src("src/css/[^_]*.styl")
 		.pipe(stylus({
 			compress: true
 		}))
 		.pipe(gulp.dest("dist/css"));
 });
 
-// Compile .coffee files (Coffeescript scripts) and uglify the js output from "src" to "dist"
+// Compile .coffee files (Coffeescript scripts) and minify the js output from "src" to "dist"
 gulp.task("coffee", function () {
 	return gulp.src("src/js/*.coffee")
 		.pipe(coffee())
-		.pipe(uglifyjs())
+		.pipe(terser())
 		.pipe(gulp.dest("dist/js"));
 });
 

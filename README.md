@@ -6,7 +6,8 @@ A table top rpg manager
   * [gulp-pug](https://github.com/gulp-community/gulp-pug) - Gulp plugin for compiling Pug templates
   * [gulp-stylus](https://github.com/stevelacy/gulp-stylus) - Gulp plugin for compiling Stylus stylesheets
   * [gulp-coffee](https://github.com/gulp-community/gulp-coffee) - Gulp plugin for compiling CoffeeScript code into vanilla JavaScript
-  * [gulp-uglify](https://github.com/terinjokes/gulp-uglify) - Gulp plugin for minifying JavaScript files
+  * [gulp-terser](https://github.com/terinjokes/gulp-uglify) - Gulp plugin for minifying JavaScript files (ES6+ compatible)
+* [terser](https://github.com/terser-js/terser) - JavaScript parser, mangler, optimizer and beautifier toolkit for ES6+
 * [pug](https://pugjs.org/api/getting-started.html) - robust, elegant, feature rich template engine for Node.js
 * [stylus](http://stylus-lang.com/) - Expressive, robust, feature-rich CSS language built for Node.js
 * [coffeescript](https://coffeescript.org/) - a little language that compiles into JavaScript

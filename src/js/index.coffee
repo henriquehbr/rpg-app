@@ -1,14 +1,25 @@
-# Menu button component
-Vue.component "menu-btn",
-	template: "
-		<button class='menu-btn'>
-			<slot></slot>
-		</button>
-	"
+openModal = (modal) ->
+	modal = "##{modal}-modal"
+	$(modal).css("display", "flex").addClass "fadeIn"
+	$(modal).children(".modal-content").addClass("slideInDown").one "animationend", ->
+		$(this).removeClass "slideInDown"
 
-# Initialize Vue
-app = new Vue
-	el: "#app"
+closeModal = (closeBtn) ->
+	modal = $(closeBtn).closest ".modal"
+	$(modal).addClass("fadeOut").on "animationend", ->
+		$(this).removeClass "fadeOut"
+	$(modal).children(".modal-content").addClass("slideOutUp").one "animationend", ->
+		$(this).removeClass "slideOutUp"
+		$(modal).hide()
+
+$(document).on "click", "#about-icon", () -> openModal "about"
+$(document).on "click", "#settings-icon", () -> openModal "settings"
+$(document).on "click", ".close-btn", (e) -> closeModal e.target
+$(document).on "click", ".modal", (e) ->
+	if (e.target != this)
+		return false
+	else
+		closeModal e.target
 
 # Get the background dominant color
 getDominantColor = (imgEl) ->
@@ -53,10 +64,22 @@ getDominantColor = (imgEl) ->
 
 	return rgb
 
-dominantColor = getDominantColor $(".background-color")[0]
-# Unfortunately, uglifyjs don't support ES6 syntax, so, instead of using template string, the concatenation must be made using "+"
-$(".menu-btn").css "background-color", "rgb(" + dominantColor.r + "," + dominantColor.g + "," + dominantColor.b + ")"
+# Get the color brightness
+getColorBrightness = (rgb) ->
+	o = Math.round(((parseInt(rgb[0]) * 299) +
+					(parseInt(rgb[1]) * 587) +
+					(parseInt(rgb[2]) * 114)) / 1000);
+	brightnessOutput = if (o > 125) then "black" else "white"
+	return brightnessOutput
 
-# Executes whenever the document is ready
-$ ->
-	# Set the buttons color accordingly to the background dominant color
+dominantColor = getDominantColor $(".background-color")[0]
+brightnessOutput = getColorBrightness [dominantColor.r, dominantColor.g, dominantColor.b]
+
+# Formats the dominant color to the css rgb default
+dominantColor = "rgb(#{dominantColor.r}, #{dominantColor.g}, #{dominantColor.b})"
+
+$(".action-btn, .modal-content").css(
+	"background-color": dominantColor,
+	"border-color": brightnessOutput,
+	"color": brightnessOutput
+)

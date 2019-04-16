@@ -21,14 +21,43 @@ html(lang="en")
 		title RPG App
 		link(rel="stylesheet", href="css/index.css")
 	body
+
 		img.background-color(src="img/pixel-wallpaper1.png")
-		#app
+
+		#settings-modal.modal
+			.modal-content
+				h2.modal-title Configurações
+				p Hello World!
+				.modal-footer
+					button.action-btn.close-btn Cancelar
+					button.action-btn OK
+		
+		#about-modal.modal
+			.modal-content
+				h2.modal-title Sobre
+				p Lorem ipsum dolor sit amet consectetur
+				.modal-footer
+					button.action-btn.close-btn Cancelar
+					button.action-btn OK
+
+		#icons-navbar
+			img#about-icon.pixel-icon(src="img/info-icon.svg")
+			img#settings-icon.pixel-icon(src="img/settings-icon.svg")
+
+		#main-container
 			.app-header
 				h1.app-title RPG app
+
 			.app-menu
-				menu-btn Iniciar
-				menu-btn Carregar RPG
-				menu-btn Editar
+				button.action-btn Iniciar
+
+				button.action-btn
+					img.pixel-icon(src="img/save-icon.svg")
+					span Carregar RPG
+
+				button.action-btn
+					img.pixel-icon(src="img/edit-icon.svg")
+					span Editar
+
 		script(src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js")
 		script(src="js/index.js")

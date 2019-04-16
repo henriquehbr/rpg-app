@@ -1,0 +1,92 @@
+.slideInDown
+	animation slideInDown 0.5s
+
+.slideOutUp
+	animation slideOutUp 0.5s
+
+.fadeIn
+	animation fadeIn 0.5s
+
+.fadeOut
+	animation fadeOut 0.5s
+
+@keyframes menuPanorama
+	0%
+		transform scale(1)
+		background-image url("../img/pixel-wallpaper1.png")
+
+	25%
+		transform scale(1.2) rotate(3deg)
+
+	50%
+		transform scale(1) rotate(0deg)
+		background-image url("../img/pixel-wallpaper2.png")
+
+	75%
+		transform scale(1.2) rotate(3deg)
+	
+	100%
+		transform scale(1) rotate(0deg)
+		background-image url("../img/pixel-wallpaper1.png")
+
+@keyframes logoEffect
+	0%
+		opacity 0
+		transform scale(0.1) rotate(30deg)
+		transform-origin center bottom
+
+	50%
+		transfrom rotate(-10deg)
+
+	75%
+		transform rotate(3deg)
+
+	100%
+		opacity 1
+		transform scale(1)
+
+@keyframes navbarIconPulse 
+	0%
+		transform scale(1)
+
+	25%
+		transform scale(1.2)
+
+	50%
+		transform scale(1)
+
+	75%
+		transform scale(1.1)
+
+	100%
+		transform scale(1)
+
+@keyframes fadeIn
+	from
+		opacity 0
+
+	to
+		opacity 1
+
+@keyframes fadeOut
+	from
+		opacity 1
+
+	to
+		opacity 0
+
+@keyframes slideInDown
+	from
+		transform translate3d(0, -100vh, 0)
+		visibility hidden
+
+	to
+		transform translate3d(0, 0, 0)
+
+@keyframes slideOutUp
+	from
+		transform translate3d(0, 0, 0)
+		visibility hidden
+
+	to
+		transform translate3d(0, -100vh, 0)
